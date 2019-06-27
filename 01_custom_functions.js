@@ -4,7 +4,7 @@
 *
 *
 */
-const coin = _.sample(["head", "tail"]); // You can determine global (random) parameters here
+const coin = _.sample(["head", "tail"]); // You can flip a coin for your experiment here
 // Declare your variables here
 
 
@@ -13,7 +13,6 @@ const coin = _.sample(["head", "tail"]); // You can determine global (random) pa
 *
 *
 */
-
 
 /* For generating random participant IDs */
     // https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
@@ -29,14 +28,31 @@ const generateID = function(len) {
 };
 // Declare your helper functions here
 
+const check_response = function(data, next) {
+    data.response_checked = false;
+    $("body").on("keydown", function(e) {
+        if (data.response_checked == false) {
+            const keyPressed = String.fromCharCode(
+                e.which
+            ).toLowerCase();
+            if (keyPressed == data.key1 || keyPressed == data.key2) {
+                if (data[keyPressed] === data.expected) {
+                    alert('Your answer is correct! Yey!');
+                } else {
+                    alert('Sorry, this answer is incorrect :( The correct answer was ' + data.expected);
+                }
+                data.response_checked = true;
+                next();
+            }
+        }})
+};
 
-
-/* Hooks  
+/* Hooks
 *
 *
 */
 
-// Error feedback if participants exceeds the time for responding
+//Error feedback if participants exceeds the time for responding
 const time_limit = function(data, next) {
     if (typeof window.timeout === 'undefined'){
         window.timeout = [];
@@ -48,23 +64,4 @@ const time_limit = function(data, next) {
     }, 5000));
     next();
 };
-
-// compares the chosen answer to the value of `option1`
-check_response = function(data, next) {
-    $('input[name=answer]').on('change', function(e) {
-        if (e.target.value === data.correct) {
-            alert('Your answer is correct! Yey!');
-        } else {
-            alert('Sorry, this answer is incorrect :( The correct answer was ' + data.correct);
-        }
-        next();
-    })
-}
-
 // Declare your hooks here
-
-
-/* Generators for custom view templates, answer container elements and enable response functions
-*
-*
-*/
