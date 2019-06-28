@@ -23,13 +23,12 @@ const intro = babeViews.view_generator('intro',{
     trials: 1,
     name: 'intro',
     // If you use JavaScripts Template String `I am a Template String`, you can use HTML <></> and javascript ${} inside
-    text:   `This is an experiment.
+    text:   `Welcome and thank you for participating in our replication of:
+            <br />
+            "Muth et al. (2012): Give me Gestalt! Preference for cubist artworks revealing high detectability of objects"
             <br />
             <br />
-            Welcome participant, you are in the <strong>${coin}</strong> group.
-            <br />
-            <br />
-            This is an experiment with 60 key press tasks. It is not fun.`,
+             `,
    buttonText: 'Begin the experiment'
 });
 
@@ -38,12 +37,13 @@ const instructions = babeViews.view_generator('instructions',{
     trials: 1,
     name: 'instrucions',
     title: 'General Instructions',
-    text:  `First `+trial_info.practiceKeyPress.length+` Trials are practice trials.
+    text:  `The experiment will be structured in two blocks, each consisting of 60 cubist artworks in randomized order.
+            In the first block you are asked to rate the pictures on liking.
+            In the second block those pictures are again rated but this time for detectability of objects.
+            In both cases you will chose ratings from 1 ("not at all") to 7 ("very")..
             <br />
             <br />
-            Press key 's' if the objects are identical,
-            <br />
-            press key 'd' if the objects differ -> not identical.`,
+            Before the experiment starts you will look at few ishihara plates to detect any color-blindness, as this may influence the results.`,
     buttonText: 'go to practice trials'
 });
 
@@ -51,12 +51,10 @@ const begin = babeViews.view_generator('begin',{
     trials: 1,
     name: 'begin',
     title: 'Begin',
-    text:  `Practice is over.
+    text:  `Now the experiment starts.
             <br />
             <br />
-            Press key 's' if the objects are identical,
-            <br />
-            press key 'd' if the objects differ -> not identical.`,
+            In the first block rate the pictures on liking.`,
     buttonText: 'go to trials'
 });
 
@@ -116,29 +114,25 @@ const thanks = babeViews.view_generator('thanks',{
 
 
 // Here, we initialize a forcedChoice view
-const practice = babeViews.view_generator('key_press',{
+const firstblock = babeViews.view_generator('rating_scale',{
     // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
-    trials: trial_info.practiceKeyPress.length,
+    trials: 60,
     // name and trial_type should be identical to the variable name
-    name: 'practice',
-    trial_type: 'practice',
-    data: _.shuffle(trial_info.practiceKeyPress),
-    pause: 500,
-    fix_duration: 1000,
+    name: 'firstblock',
+    trial_type: 'firstblock',
+    data: _.shuffle(trial_info.rating_scale),
     hook:{
       after_response_enabled: check_response
     }
 
 });
-const keyPress1 = babeViews.view_generator('key_press',{
+const secondblock = babeViews.view_generator('rating_scale',{
     // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
-    trials: trial_info.keyPress.length,
+    trials: 60,
     // name and trial_type should be identical to the variable name
-    name: 'keyPress1',
-    trial_type: 'keyPress1',
-    data: _.shuffle(trial_info.keyPress),
-    pause: 500,
-    fix_duration: 1000
+    name: 'secondblock',
+    trial_type: 'secondblock',
+    data: _.shuffle(trial_info.rating_scale)
 });
 
 // There are many more templates available:

@@ -2,668 +2,372 @@
 
 
 const trial_info = {
-    practiceKeyPress: [
+  rating_scale:[
       {
-          question: "same or different?",
-          picture: 'mental_rotation_images/1_50_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "1",
-          degreeOfRotation: "50"
+          question: "Rate this picture",
+          picture: 'realartsyimages/001.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
       },
       {
-          question: "same or different?",
-          picture: 'mental_rotation_images/1_50_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "1",
-          degreeOfRotation: "50"
+          question: "Rate this picture",
+          picture: 'realartsyimages/002.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
       },
       {
-          question: "same or different?",
-          picture: 'mental_rotation_images/1_150_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "1",
-          degreeOfRotation: "150"
+          question: "Rate this picture",
+          picture: 'realartsyimages/003.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
       },
       {
-          question: "same or different?",
-          picture: 'mental_rotation_images/1_150_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "1",
-          degreeOfRotation: "150"
+          question: "Rate this picture",
+          picture: 'realartsyimages/004.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
       },
       {
-          question: "same or different?",
-          picture: 'mental_rotation_images/2_50_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "2",
-          degreeOfRotation: "50"
+          question: "Rate this picture",
+          picture: 'realartsyimages/005.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
       },
       {
-          question: "same or different?",
-          picture: 'mental_rotation_images/2_50_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "2",
-          degreeOfRotation: "50"
+          question: "Rate this picture",
+          picture: 'realartsyimages/006.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
       },
       {
-          question: "same or different?",
-          picture: 'mental_rotation_images/2_150_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "2",
-          degreeOfRotation: "150"
+          question: "Rate this picture",
+          picture: 'realartsyimages/007.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
       },
       {
-          question: "same or different?",
-          picture: 'mental_rotation_images/2_150_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "2",
-          degreeOfRotation: "150"
+          question: "Rate this picture",
+          picture: 'realartsyimages/008.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
       },
       {
-          question: "same or different?",
-          picture: 'mental_rotation_images/3_50_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "3",
-          degreeOfRotation: "50"
+          question: "Rate this picture",
+          picture: 'realartsyimages/009.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
       },
       {
-          question: "same or different?",
-          picture: 'mental_rotation_images/3_50_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "1",
-          degreeOfRotation: "50"
+          question: "Rate this picture",
+          picture: 'realartsyimages/106.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
       },
       {
-          question: "same or different?",
-          picture: 'mental_rotation_images/3_150_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "3",
-          degreeOfRotation: "150"
+          question: "Rate this picture",
+          picture: 'realartsyimages/010.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
       },
       {
-          question: "same or different?",
-          picture: 'mental_rotation_images/3_150_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "1",
-          degreeOfRotation: "50"
+          question: "Rate this picture",
+          picture: 'realartsyimages/011.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/012.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/013.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/014.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/015.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/036.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/037.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/038.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/039.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/040.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/041.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/042.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/043.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/044.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/045.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/046.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/047.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/048.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/049.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/050.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/072.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/073.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/074.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/075.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/105.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/076.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/077.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/078.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/079.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/080.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/081.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/104.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/082.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/083.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/084.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/085.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/086.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/103.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/087.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/092.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/093.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/102.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/094.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/095.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/101.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/096.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/097.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/098.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/099.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
+      },
+      {
+          question: "Rate this picture",
+          picture: 'realartsyimages/100.jpg',
+          optionLeft: 'not at all',
+          optionRight: 'very'
       }
     ],
-    keyPress: [
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/4_50_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "4",
-          degreeOfRotation: "50"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/4_50_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "1",
-          degreeOfRotation: "50"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/4_150_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "4",
-          degreeOfRotation: "150"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/4_150_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "4",
-          degreeOfRotation: "150"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/5_50_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "5",
-          degreeOfRotation: "50"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/5_50_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "5",
-          degreeOfRotation: "50"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/5_150_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "5",
-          degreeOfRotation: "150"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/5_150_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "5",
-          degreeOfRotation: "150"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/6_50_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "6",
-          degreeOfRotation: "50"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/6_50_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "6",
-          degreeOfRotation: "50"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/6_150_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "6",
-          degreeOfRotation: "150"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/6_150_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "6",
-          degreeOfRotation: "150"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/7_50_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "7",
-          degreeOfRotation: "50"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/7_50_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "7",
-          degreeOfRotation: "50"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/7_150_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "7",
-          degreeOfRotation: "150"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/7_150_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "7",
-          degreeOfRotation: "150"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/8_50_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "8",
-          degreeOfRotation: "50"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/8_50_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "8",
-          degreeOfRotation: "50"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/8_150_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "8",
-          degreeOfRotation: "150"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/8_150_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "8",
-          degreeOfRotation: "150"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/9_50_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "9",
-          degreeOfRotation: "50"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/9_50_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "9",
-          degreeOfRotation: "50"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/9_150_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "9",
-          degreeOfRotation: "150"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/9_150_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "9",
-          degreeOfRotation: "150"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/10_50_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "10",
-          degreeOfRotation: "50"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/10_50_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "10",
-          degreeOfRotation: "50"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/10_150_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "10",
-          degreeOfRotation: "150"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/10_150_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "10",
-          degreeOfRotation: "150"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/11_50_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "11",
-          degreeOfRotation: "50"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/11_50_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "11",
-          degreeOfRotation: "50"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/11_150_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "11",
-          degreeOfRotation: "150"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/11_150_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "11",
-          degreeOfRotation: "150"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/12_50_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "12",
-          degreeOfRotation: "50"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/12_50_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "12",
-          degreeOfRotation: "50"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/12_150_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "12",
-          degreeOfRotation: "150"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/12_150_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "12",
-          degreeOfRotation: "150"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/13_50_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "13",
-          degreeOfRotation: "50"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/13_50_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "13",
-          degreeOfRotation: "50"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/13_150_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "13",
-          degreeOfRotation: "150"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/13_150_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "13",
-          degreeOfRotation: "150"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/14_50_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "14",
-          degreeOfRotation: "50"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/14_50_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "14",
-          degreeOfRotation: "50"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/14_150_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "14",
-          degreeOfRotation: "150"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/14_150_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "14",
-          degreeOfRotation: "150"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/15_50_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "15",
-          degreeOfRotation: "50"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/15_50_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "15",
-          degreeOfRotation: "50"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/15_150_different.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"different",
-          numberOfPic: "15",
-          degreeOfRotation: "150"
-      },
-      {
-          question: "same or different?",
-          picture: 'mental_rotation_images/15_150_same.jpg',
-          key1: 's',
-          key2: 'd',
-          s: 'same',
-          d: "different",
-          expected:"same",
-          numberOfPic: "15",
-          degreeOfRotation: "150"
-      }
-    ]
-};
+  };
