@@ -2,6 +2,30 @@
 
 
 const trial_info = {
+  textbox_input:[
+    {
+      picture:'Ishihara/6.jpg',
+      question:'Can you see a number ?',
+      position: 'absolute',
+      top: 20,
+      min_chars:0
+    },
+    {
+      picture:'Ishihara/8.jpg',
+      question:'Can you see a number ?',
+      min_chars:0
+    },
+    {
+      picture:'Ishihara/18.jpg',
+      question:'Can you see a number ?',
+      min_chars:0
+    },
+    {
+      picture:'Ishihara/29.jpg',
+      question:'Can you see a number ?',
+      min_chars:0
+    }
+  ],
   rating_scale:[
       {
           question: "Rate this picture",

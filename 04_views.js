@@ -43,21 +43,31 @@ const instructions = babeViews.view_generator('instructions',{
             In both cases you will chose ratings from 1 ("not at all") to 7 ("very")..
             <br />
             <br />
-            Before the experiment starts you will look at few ishihara plates to detect any color-blindness, as this may influence the results.`,
-    buttonText: 'go to practice trials'
+            Before the experiment starts you will look at few ishihara plates to detect any color-blindness, as this may influence the results.
+            If you can see a number in the ishihara plate write that down in the textbox. If not just answer 'no'.`,
+    buttonText: 'go to Ishihara tests'
 });
 
 const begin = babeViews.view_generator('begin',{
     trials: 1,
     name: 'begin',
-    title: 'Begin',
+    title: 'First Block',
     text:  `Now the experiment starts.
             <br />
             <br />
             In the first block rate the pictures on liking.`,
-    buttonText: 'go to trials'
+    buttonText: 'go to first block'
 });
-
+const begin2 = babeViews.view_generator('begin',{
+    trials: 1,
+    name: 'begin2',
+    title: 'Second Block',
+    text:  `Now the second block begins.
+            <br />
+            <br />
+            Rate the pictures on detectability of objects from now on.`,
+    buttonText: 'go to second block'
+});
 
 // In the post test questionnaire you can ask your participants addtional questions
 const post_test = babeViews.view_generator('post_test',{
@@ -112,8 +122,13 @@ const thanks = babeViews.view_generator('thanks',{
 * All about the properties of trial - https://github.com/babe-project/babe-project/blob/master/docs/views.md#properties-of-trial
 */
 
-
 // Here, we initialize a forcedChoice view
+const ishihara = babeViews.view_generator('textbox_input',{
+    trials: 4,
+    name: 'ishihara',
+    trail_type: 'ishihara',
+    data: _.shuffle(trial_info.textbox_input),
+});
 const firstblock = babeViews.view_generator('rating_scale',{
     // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
     trials: 60,
@@ -121,10 +136,10 @@ const firstblock = babeViews.view_generator('rating_scale',{
     name: 'firstblock',
     trial_type: 'firstblock',
     data: _.shuffle(trial_info.rating_scale),
+    title: 'Likeness',
     hook:{
       after_response_enabled: check_response
     }
-
 });
 const secondblock = babeViews.view_generator('rating_scale',{
     // This will use all trials specified in `data`, you can user a smaller value (for testing), but not a larger value
@@ -132,7 +147,11 @@ const secondblock = babeViews.view_generator('rating_scale',{
     // name and trial_type should be identical to the variable name
     name: 'secondblock',
     trial_type: 'secondblock',
-    data: _.shuffle(trial_info.rating_scale)
+    data: _.shuffle(trial_info.rating_scale),
+    title: 'Detectability',
+    hook:{
+      after_response_enabled: check_response
+    }
 });
 
 // There are many more templates available:

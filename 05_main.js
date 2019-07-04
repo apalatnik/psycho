@@ -17,7 +17,10 @@ $("document").ready(function() {
         views_seq: [
             intro,
             instructions,
+            ishihara,
+            begin,
             firstblock,
+            begin2,
             secondblock,
             post_test,
             thanks,
