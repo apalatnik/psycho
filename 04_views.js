@@ -23,9 +23,7 @@ const intro = babeViews.view_generator('intro',{
     trials: 1,
     name: 'intro',
     // If you use JavaScripts Template String `I am a Template String`, you can use HTML <></> and javascript ${} inside
-    text:   `Welcome and thank you for participating in our replication of:
-            <br />
-            "Muth et al. (2012): Give me Gestalt! Preference for cubist artworks revealing high detectability of objects"
+    text:   `Welcome and thank you for participating in our experiment!
             <br />
             <br />
              `,
@@ -39,7 +37,7 @@ const instructions = babeViews.view_generator('instructions',{
     title: 'General Instructions',
     text:  `The experiment will be structured in two blocks, each consisting of 60 cubist artworks in randomized order.
             In the first block you are asked to rate the pictures on liking.
-            In the second block those pictures are again rated but this time for detectability of objects.
+            In the second block pictures are again rated but this time for detectability of objects.
             In both cases you will chose ratings from 1 ("not at all") to 7 ("very")..
             <br />
             <br />
