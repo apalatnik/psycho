@@ -134,7 +134,7 @@ const firstblock = babeViews.view_generator('rating_scale',{
     name: 'firstblock',
     trial_type: 'firstblock',
     data: _.shuffle(trial_info.rating_scale),
-    title: 'Likeness',
+    title: 'Liking',
     hook:{
       after_response_enabled: check_response
     }
