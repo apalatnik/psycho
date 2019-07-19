@@ -1,0 +1,240 @@
+---
+title: "GiveMeGestalt"
+author: "Jakob Litsch, Dawit Asfaha, Friedrich Heitzer, Alexander Palatnik"
+date: "7/17/2019"
+output: html_document
+---
+
+# Final Project of the Experimental Psychology Lab
+
+## Introduction
+
+As part of the course "Experimental Psychology Lab" at University Osnabrück offered by Prof. Dr. Michael Franke we were given the task to replicate a study as our final project. We chose the paper "Give me Gestalt! Preference for Cubist Artwork revealing High Detectability of Objects" written by Claudia Muth and several other members of the Department of General Psychology and Methodology at the University of Bamberg and published on the 21. of November, 2012. The theoretical background lies mainly in the Gestalt theory. Scientists have hypothesized that perceptual grouping processes are linked to the ‘reward system’, neural structures that induce a pleasant sensation after finishing a task. This study is the first to show empirically that in fact there is a connection between detectability of Gestalt or objects in challenging visual stimuli and a pleasing sensation. This is a highly interesting observation as it is in conflict with statements such as that viewers derive aesthetic pleasure from violations of their perceptual predictions. The goal of our replication is to find out whether our results would support the hypothesis of the original study. Furthermore, we have done research on cubism and the stimuli which were presented in the original study. Cubism can be devided into analytical and synthetic cubism. We wanted to check if and to what degree the different cubist styles as well as color affects the detectability ratings of the artworks.
+
+## Hypotheses
+
+[H1] Participants without expertise in cubism appreciate cubist artworks more if they can easily detect concealed objects in them.
+[H2] Synthetic cubism shows higher detectability than analytical cubism.
+[H3] Participants without expertise in cubism appreciate colorful cubist artworks more than monochrome cubist artworks.
+
+## Participants
+
+Twenty-nine participants volunteered in the study (15 females, 13 males, 1 unknown gender). The age range is 18-78 with an apporximate mean age of 30. The participants were tested for color vision by a short version of the ishihara vision test.
+
+## Procedure
+
+Participants performed the experiment at a location of their choice due to this being an online replication only. After a short explanation of what the participant should expect from the experiment and what his/her tasks are the participant starts with the Ishihara test. Our Ishihara test consists of four picture which were shown to the participant in a randomized order. If the participant failed the test, we exclude them from the analysis of the study. Additionally, we managed to exclude children, people with expertise in cubism, no english knowledge and/or neruological disorders due to the fact that we recruited the participants from our friends and family.
+The test is followed by the first block of pictures (60 pictures) which were to rate on liking on a scale from 1 (not much) to 7 (very). In the second block the same pictures were shown and the participants were asked to rate them again from 1 to 7 but this time on detecatibility of objects in the picture. In both blocks the pictures were presented in a randomized order. We have decided to not do test trials beforehand, due to the simplicity of the task.
+The cubist artworks we used were provided by the conducters of the original study.
+
+## Analysis
+
+In order to analyse the data we have to tidy it up. We select the columns we need for the analysis, shorten the strings for easier comparison, manually filter out the participants who failed the Ishihara test or responded too quick and restructure the dataframe in a way so that we end up with a likeability and a detectability column for later plotting. Moreover, we plot the dataset and construct a metric and a monotonic model to see if we can prove our hypothesis. Additionally, we compare the models to see which one fits best. At the end we also look at the impact of style and color on the detactability of objects.
+
+
+### Load The libraries
+```{r}
+
+library(tidyverse)
+library(brms)
+
+```
+
+### Read the data
+```{r}
+
+data <- read_csv("results_group5.csv")
+data
+
+```
+
+### Select and mutate important columns
+```{r}
+
+data <- select(data, RT, response, submission_id, trial_name, picture)
+
+data <- mutate(data, trial_name=factor(trial_name), response=factor(response, ordered=T))
+
+data
+
+
+```
+
+
+### Tidy up picture column
+```{r}
+
+data <- data.frame(lapply(data, function(x) {gsub("realartsyimages/", "", x)}))
+data <- data.frame(lapply(data, function(x) {gsub(".jpg", "", x)}))
+data <- data.frame(lapply(data, function(x) {gsub("Ishihara/", "", x)}))
+
+data
+
+```
+
+### Manually filter out our testrun, participants who failed the Ishihara Test and participants who misunderstood the task.
+
+777, 708, 707, 875 failed the Ishihara test. The Ishihara test is considered as failed if a participant makes two or more mistakes. Answers such as "Yes, Y, Yeah" etc. were considered as mistakes.
+640 was a Testrun by us.
+772 clearly misunderstood the task.
+```{r}
+
+#777, 708, 707, 875
+#640 was a Testrun by us
+
+data <- filter(data, !(submission_id %in% c("707", "708", "777", "875","640","772")))
+data <- filter(data, trial_name != "ishihara")
+
+data
+
+```
+
+
+### Restructure Dataframe to Have a likeability and a detectability column
+```{r}
+
+firstblock <- filter(data, trial_name=="firstblock")
+secondblock <- filter(data, trial_name=="secondblock")
+jointdataset <- merge(firstblock, secondblock, by = c('submission_id','picture')) %>% mutate(RT.x = as.numeric(RT.x), RT.y = as.numeric(RT.y))
+
+jointdataset
+
+```
+
+### Filter out too fast RTs
+
+All rows with a quicker RT than the printed value below were removed.
+```{r}
+print(mean(jointdataset$RT.x)-1.25*sd(jointdataset$RT.x))
+jointdataset <- filter(jointdataset, RT.x >= mean(RT.x)-1.25*sd(RT.x), RT.y >= mean(RT.x)-1.25*sd(RT.x)) %>% mutate(liking = factor(response.x, ordered = T), detectability = factor(response.y, ordered = T)) %>% select(ID = submission_id, picture, RTliking= RT.x, RTdetectability = RT.y, liking, detectability) %>% as_tibble()
+
+jointdataset
+```
+
+### Plotting the dataset
+```{r}
+
+ggplot(jointdataset, aes(x = detectability, y= liking)) + geom_jitter() + geom_smooth(method = "lm")
+
+```
+
+### Construct a monotonic model
+```{r}
+
+m_monotonic = brm(formula = liking ~ mo(detectability),
+               data = jointdataset,
+               family = cumulative("logit"))
+
+```
+### Construct a metric model
+```{r}
+
+m_metric = brm(formula = liking ~ as.numeric(detectability),
+               data = jointdataset,
+               family = cumulative("logit"))
+
+```
+
+## Plotting the monotnic and metric model
+```{r}
+
+marginal_effects(m_monotonic)
+marginal_effects(m_metric)
+
+```
+
+### Showing significant results of the two models
+
+The results show that both models lead to significant reults supporting the hypothesis.
+You can see this in the table in the population-level effects tables in respectively the last row in the 95% columns. As the interval of the 95% columns does not contain zero the results show a significant positive correlation between liking and detectability.
+```{r}
+
+m_monotonic
+
+m_metric
+
+```
+### Comparing the 2 models
+
+Loo() shows the better model depending on estimating points accurately while punishing complexity. The better model is the top one shown in the table "Model comparisons" and in this case the monotonic model is slightly better.
+```{r}
+
+loo(m_metric, m_monotonic)
+
+```
+
+### Creating a dataframe for H2 and H3
+
+style(0 = analytical, 1 = synthetic), color(0 = colored, 1 = monochrome)
+```{r}
+
+styledata <- read_csv("style_cub3.csv")
+#styledata$picture <- seq.int(nrow(styledata))
+styledata
+
+```
+
+### [H2] and [H3] analysis
+
+As our results support the statement that liking goes hand in hand with detectability we do not check whether color affects liking but we check whether color affects detectability.
+```{r}
+
+imagedata <- select(jointdataset, ID, picture, liking, detectability) %>% merge(styledata, by = c('picture')) %>% mutate(style = factor(style, ordered = T), color = factor(color, ordered = T))
+
+imagedata
+```
+
+### Plotting
+```{r}
+
+ggplot(imagedata, aes(x = detectability, y = style)) + geom_jitter() + geom_smooth(method = "lm")
+ggplot(imagedata, aes(x = detectability, y = color)) + geom_jitter() + geom_smooth(method = "lm")
+
+
+```
+
+### Construct models
+```{r}
+
+m_metric_style = brm(formula = detectability ~ style,
+               data = imagedata,
+               family = cumulative("logit"))
+
+
+
+m_metric_color = brm(formula = detectability ~ color,
+               data = imagedata,
+               family = cumulative("logit"))
+
+```
+
+### Plotting metric models
+```{r}
+
+marginal_effects(m_metric_style)
+marginal_effects(m_metric_color)
+
+
+```
+
+### Showing significant results of the two models
+
+While the style seems to have a clear effect on the detectability of objects supporting [H2], the effect of color is not as strong although there is a slightly negative correlation. Yet, we can not conclude that this supports [H3] as there are not exactly the same amount of colorful and monochrome pictures considered in this model. The difference in considered trials between the colorful and monochrome pictures is approximately 30.
+```{r}
+
+m_metric_style
+
+m_metric_color
+
+```
+
+## Discussion
+
+The results of our analysis support our hypotheses. It is interesting to see that the controlled environment provided in the original study does not seem to have a big impact on the outcome. 
+Furthermore, one should note that, even though we are not able to say for sure, our results hint at the effects of color. Monochrome pictures revceived a slightly worse detectability score. In future replications the conductors might want to look at this effect in more detail. The different styles of the artworks have a great impact on the detectability of objects and therefore on liking. Interestingly enough synthetic cubism is more modern than analytical cubism. This finding might be interesting for art historians as it suggests that the artists adapt their artworks to the liking of the people who perceive them subconsciously with the help of different mechanisms of our visual system. Nevertheless, not all questions have been answered. When discussing the results we were wondering whether there can be too much detectability. We are interested to find out whether there is a limit to our Gestalt perception. We wonder what perfect artwork for the human perception would look like. Eventually, it is possible to find that out by looking at this perceptive phenomenon in different kinds of visual art. Such finding could have a significant impact on future art as well as further understanding of the human visual perception.
+
+
+
+
+
+
